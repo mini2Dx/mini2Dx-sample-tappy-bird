@@ -2,7 +2,7 @@ package org.mini2dx.Tappybird;
 
 import org.mini2Dx.core.engine.geom.CollisionPoint;
 
-import static org.mini2dx.Tappybird.TappyBirdGame.flyingspeed;
+import static org.mini2dx.Tappybird.TappyBirdGame.FLYING_SPEED;
 
 public class Hazards {
 
@@ -14,7 +14,7 @@ public class Hazards {
 
     void update() {
         point.preUpdate();
-        point.set(point.getX() - flyingspeed, point.getY());
+        point.set(point.getX() - FLYING_SPEED, point.getY());
     }
 
     void interpolate(float alpha) {
