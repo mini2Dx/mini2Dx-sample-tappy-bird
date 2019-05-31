@@ -1,40 +1,32 @@
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.graphics.Texture;
 import org.mini2Dx.core.graphics.Graphics;
 
-import static org.mini2dx.Tappybird.TappyBirdGame.gameHeight;
+import static org.mini2dx.Tappybird.TappyBirdGame.GAME_HEIGHT;
+import static org.mini2dx.Tappybird.TappyBirdGame.GAME_WIDTH;
 
 public class TopBottomEdge extends Hazards {
 
-    /*
-    private static final String groundTexturePath = "groundDirt.png";
-    private static final String ceilingTexturePath = "ceilingDirt.png";
-
-    Texture groundTexture = new Texture(groundTexturePath);
-    Texture ceilingTexture = new Texture(ceilingTexturePath);
-
-     */
-
-    TopBottomEdgeModel topBottomEdgeModel;
+    TopBottomEdgeTexture topBottomEdgeTexture;
     private float groundTextureHeight;
 
-    public TopBottomEdge(TopBottomEdgeModel topBottomEdgeModel) {
-        this.topBottomEdgeModel = topBottomEdgeModel;
+    public TopBottomEdge(TopBottomEdgeTexture topBottomEdgeModel) {
+        this.topBottomEdgeTexture = topBottomEdgeModel;
         groundTextureHeight = topBottomEdgeModel.groundTexture.getHeight();
     }
 
     @Override
     void update() {
         super.update();
-        if (point.getX() < -799f) {
-            point.setX(799f);
+        if (point.getX() < -GAME_WIDTH-1) {
+            point.setX(GAME_WIDTH-1);
         }
     }
 
     void render(Graphics g) {
-        g.drawTexture(topBottomEdgeModel.groundTexture, point.getX(), gameHeight - topBottomEdgeModel.groundTexture.getHeight());
-        g.drawTexture(topBottomEdgeModel.ceilingTexture, point.getX(), 0f);
+        g.drawTexture(topBottomEdgeTexture.groundTexture, point.getX(),
+                GAME_HEIGHT - topBottomEdgeTexture.groundTexture.getHeight());
+        g.drawTexture(topBottomEdgeTexture.ceilingTexture, point.getX(), 0f);
     }
 
 
