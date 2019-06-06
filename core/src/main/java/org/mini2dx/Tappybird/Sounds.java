@@ -1,15 +1,28 @@
-package org.mini2dx.Tappybird;
+/*******************************************************************************
+ * Copyright 2019 Viridian Software Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
 
+package org.mini2dx.Tappybird;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-
 import java.util.Random;
 
 public class Sounds{
 
-    private static final String ENGINE_SOUND_LOCATION = "Sounds/engine4.ogg";
     private static final String PILLAR_PASS_SOUND_LOCATION = "Sounds/coin1.ogg";
     private static final String EXPLOSION_1_SOUND_LOCATION = "Sounds/explosion1.ogg";
     private static final String EXPLOSION_2_SOUND_LOCATION = "Sounds/explosion2.ogg";
@@ -18,9 +31,9 @@ public class Sounds{
     private static final String EXPLOSION_5_SOUND_LOCATION = "Sounds/explosion5.ogg";
     private static final String BACKGROUND_MUSIC_LOCATION = "Sounds/Cheerful Annoyance_v2.wav";
 
-
-    Sound engineSound = Gdx.audio.newSound(Gdx.files.internal(ENGINE_SOUND_LOCATION));
+    static long PILLAR_PASS_SOUND_ID;
     static Sound pillarPassSound = Gdx.audio.newSound(Gdx.files.internal(PILLAR_PASS_SOUND_LOCATION));
+
 
     Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(BACKGROUND_MUSIC_LOCATION));
 
@@ -30,28 +43,16 @@ public class Sounds{
                                 Gdx.audio.newSound(Gdx.files.internal(EXPLOSION_4_SOUND_LOCATION)),
                                 Gdx.audio.newSound(Gdx.files.internal(EXPLOSION_5_SOUND_LOCATION))};
 
-    long engineSoundID, backgroundSoundID;
-    static long PILLAR_PASS_SOUND_ID;
-
-    void loopEngineSound(){
-        engineSoundID = engineSound.loop(0.25f);
-    }
-
     void loopBackgroundMusic(){
-        backgroundMusic.setVolume(0.1f);
+        backgroundMusic.setVolume(0.25f);
         if(!backgroundMusic.isLooping()){
             backgroundMusic.play();
         }
         backgroundMusic.setLooping(true);
     }
 
-    void disposeEngineSound(){
-        engineSound.dispose();
-    }
-
     static void playPillarPassSound(){
         PILLAR_PASS_SOUND_ID = pillarPassSound.play(1f);
-        pillarPassSound.dispose();
     }
 
     void disposeBackgroundMusic(){
