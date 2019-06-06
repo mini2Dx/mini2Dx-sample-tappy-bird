@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright 2019 Viridian Software Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
 package org.mini2dx.Tappybird;
 
 import org.mini2Dx.core.engine.geom.CollisionBox;
@@ -5,9 +21,7 @@ import org.mini2Dx.core.game.BasicGame;
 import org.mini2Dx.core.graphics.Graphics;
 import org.mini2Dx.core.graphics.viewport.FitViewport;
 import org.mini2Dx.core.graphics.viewport.Viewport;
-
 import java.util.Random;
-
 import static org.mini2dx.Tappybird.Sounds.playPillarPassSound;
 
 
@@ -25,7 +39,7 @@ public class TappyBirdGame extends BasicGame {
     private static boolean IS_ROTATING = false;
     private static boolean IS_TESTING = false;
     private static int MAX_PILLARS = 8;
-    private static int PILLAR_TIMING = 60;  //Lower will increase the frequency of pillars.
+    private static int PILLAR_TIMING = 70;  //Lower will increase the frequency of pillars.
     private static float PILLAR_Y_MIN = -150f;
     private static float PILLAR_Y_MAX = 0f;
     private static float PILLAR_GAP_MIN = 175f;
@@ -74,7 +88,6 @@ public class TappyBirdGame extends BasicGame {
         userInterfaceTexture = new UserInterfaceTexture();
 
         gameSounds = new Sounds();
-        //gameSounds.loopEngineSound();
         gameSounds.loopBackgroundMusic();
 
         inputHandler = new InputHandler();
@@ -137,7 +150,6 @@ public class TappyBirdGame extends BasicGame {
                 }
             }
 
-
             player.update(inputHandler.spacePressed(), delta);
             ground1.update();
             ground2.update();
@@ -146,15 +158,9 @@ public class TappyBirdGame extends BasicGame {
 
             if (player.getPlayerY() < 0 || player.getPlayerY() > GAME_HEIGHT - player.getPlayerTextureHeight()) {
                 setDead();
-                //initialise();
             }
 
             checkCollisions();
-
-            //TODO Code here to exit the game.
-            if (inputHandler.escPressed()) {
-
-            }
         }
     }
 
@@ -163,8 +169,6 @@ public class TappyBirdGame extends BasicGame {
         ground1.interpolate(alpha);
         ground2.interpolate(alpha);
     }
-
-    private float[] topCollisionVertices, bottomCollisionVertices;
 
     @Override
     public void render(Graphics g) {
@@ -187,30 +191,12 @@ public class TappyBirdGame extends BasicGame {
 
         if (!inGame) {
             userInterface.displayGetReadyMessage(g);
-            //userInterface.displayScore(g, highScore);
             userInterface.displayHighscore(g,highScore);
         }
 
         if (isDead) {
             userInterface.displayGameOverMessage(g);
         }
-
-        //TODO Render code below here is for testing purposes only.
-            /*
-            g.setColor(Color.GREEN);
-            for (int j = 0; j<MAX_PILLARS; j++){
-                if(collisionRectanglesTop[j]!=null) {
-                    topCollisionVertices = collisionRectanglesTop[j].getVertices();
-                    bottomCollisionVertices = collisionRectanglesBottom[j].getVertices();
-                    for (int i = 0; i < 7; i = i + 2) {
-                        g.drawLineSegment(topCollisionVertices[i], topCollisionVertices[i + 1],
-                                topCollisionVertices[(i + 2) % 8], topCollisionVertices[(i + 3) % 8]);
-                        g.drawLineSegment(bottomCollisionVertices[i], bottomCollisionVertices[i + 1],
-                                bottomCollisionVertices[(i + 2) % 8], bottomCollisionVertices[(i + 3) % 8]);
-                    }
-                }
-            }
-            */
     }
 
     float randomFloatMinMax(float min, float max) {
@@ -224,13 +210,11 @@ public class TappyBirdGame extends BasicGame {
             if (collisionRectanglesBottom[i] != null) {
                 if (player.playerCollisionBox.intersects(collisionRectanglesBottom[i])) {
                     setDead();
-                    //initialise();
                 }
             }
             if (collisionRectanglesTop[i] != null) {
                 if (player.playerCollisionBox.intersects(collisionRectanglesTop[i])) {
                     setDead();
-                    //initialise();
                 }
             }
         }
@@ -238,7 +222,7 @@ public class TappyBirdGame extends BasicGame {
 
     public static void setScore(int score) {
         playerScore = score;
-        //playPillarPassSound();
+        playPillarPassSound();
     }
 
     public static int getScore() {
@@ -249,7 +233,6 @@ public class TappyBirdGame extends BasicGame {
         isDead = true;
         FLYING_SPEED = 0f;
         GRAVITY = 0f;
-        gameSounds.disposeEngineSound();
         gameSounds.playRandomExplosionSound();
     }
 }

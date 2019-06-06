@@ -1,15 +1,32 @@
+/*******************************************************************************
+ * Copyright 2019 Viridian Software Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
 package org.mini2dx.Tappybird;
 
 import com.badlogic.gdx.graphics.Color;
 import org.mini2Dx.core.engine.geom.CollisionBox;
 import org.mini2Dx.core.graphics.Graphics;
-
 import static org.mini2dx.Tappybird.Player.PLAYER_X;
 
 
 public class Pillars extends Hazards {
 
     private boolean isRotating;
+    private boolean hasBeenCalled = false;
+    private boolean counted = false;
 
     float hazardYGap;
     float pillarHeight;
@@ -68,9 +85,6 @@ public class Pillars extends Hazards {
         }
     }
 
-    private boolean hasBeenCalled = false;
-    private boolean counted = false;
-
     void update(float speed) {
         super.update();
         collisionRectTop.preUpdate();
@@ -79,15 +93,6 @@ public class Pillars extends Hazards {
         if(!hasBeenCalled) {
             collisionRectTop.moveTowards(-100, collisionRectTop.getY(), speed);
             collisionRectBottom.moveTowards(-100, collisionRectBottom.getY(), speed);
-
-            /* This code does the same as move but sets the location each frame
-
-            collisionRectTop.setX(point.getX() + halfPillarWidth - pillarWidth/4);
-            collisionRectTop.setRotationAround(collisionRectTop.getCenterX(),collisionRectTop.getCenterY(),-20);
-            collisionRectBottom.setX(point.getX() + halfPillarWidth);
-            collisionRectBottom.setRotationAround(collisionRectBottom.getCenterX(),collisionRectBottom.getCenterY(),20);
-
-             */
         }
 
         if(!counted && getHazardXPos()<PLAYER_X){
@@ -95,7 +100,6 @@ public class Pillars extends Hazards {
             counted = true;
         }
     }
-
 
     void render(Graphics g, boolean isTesting) {
         g.drawTexture(pillarTexture.pillarDown, point.getX(), point.getY());
