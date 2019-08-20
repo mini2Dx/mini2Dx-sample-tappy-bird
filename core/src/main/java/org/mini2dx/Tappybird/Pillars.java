@@ -16,9 +16,10 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.graphics.Color;
-import org.mini2Dx.core.engine.geom.CollisionBox;
-import org.mini2Dx.core.graphics.Graphics;
+import org.mini2Dx.core.Graphics;
+import org.mini2Dx.core.collision.CollisionBox;
+import org.mini2Dx.core.graphics.Colors;
+
 import static org.mini2dx.Tappybird.Player.PLAYER_X;
 
 
@@ -72,7 +73,7 @@ public class Pillars extends Hazards {
 
     //Test function
     void DrawPillarCollisionBoxes(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Colors.RED());
 
         topCollisionVertices = collisionRectTop.getVertices();
         bottomCollisionVertices = collisionRectBottom.getVertices();

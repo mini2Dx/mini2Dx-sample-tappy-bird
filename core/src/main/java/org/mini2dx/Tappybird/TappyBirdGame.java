@@ -16,9 +16,9 @@
 
 package org.mini2dx.Tappybird;
 
-import org.mini2Dx.core.engine.geom.CollisionBox;
+import org.mini2Dx.core.Graphics;
+import org.mini2Dx.core.collision.CollisionBox;
 import org.mini2Dx.core.game.BasicGame;
-import org.mini2Dx.core.graphics.Graphics;
 import org.mini2Dx.core.graphics.viewport.FitViewport;
 import org.mini2Dx.core.graphics.viewport.Viewport;
 import java.util.Random;
@@ -162,12 +162,6 @@ public class TappyBirdGame extends BasicGame {
 
             checkCollisions();
         }
-    }
-
-    @Override
-    public void interpolate(float alpha) {
-        ground1.interpolate(alpha);
-        ground2.interpolate(alpha);
     }
 
     @Override

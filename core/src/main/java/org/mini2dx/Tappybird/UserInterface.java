@@ -16,8 +16,9 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.graphics.Texture;
-import org.mini2Dx.core.graphics.Graphics;
+import org.mini2Dx.core.Graphics;
+import org.mini2Dx.core.graphics.Texture;
+
 import java.util.LinkedList;
 import java.util.List;
 import static org.mini2dx.Tappybird.TappyBirdGame.GAME_HEIGHT;

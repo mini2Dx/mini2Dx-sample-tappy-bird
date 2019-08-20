@@ -16,9 +16,11 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
+import org.mini2Dx.core.Mdx;
+import org.mini2Dx.core.audio.Music;
+import org.mini2Dx.core.audio.Sound;
+
+import java.io.IOException;
 import java.util.Random;
 
 public class Sounds{
@@ -32,16 +34,40 @@ public class Sounds{
     private static final String BACKGROUND_MUSIC_LOCATION = "Sounds/Cheerful Annoyance_v2.wav";
 
     static long PILLAR_PASS_SOUND_ID;
-    static Sound pillarPassSound = Gdx.audio.newSound(Gdx.files.internal(PILLAR_PASS_SOUND_LOCATION));
+    static Sound pillarPassSound;
+
+    static {
+        try {
+            pillarPassSound = Mdx.audio.newSound(Mdx.files.internal(PILLAR_PASS_SOUND_LOCATION));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
-    Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(BACKGROUND_MUSIC_LOCATION));
+    Music backgroundMusic;
 
-    Sound[] explosionSounds = {Gdx.audio.newSound(Gdx.files.internal(EXPLOSION_1_SOUND_LOCATION)),
-                                Gdx.audio.newSound(Gdx.files.internal(EXPLOSION_2_SOUND_LOCATION)),
-                                Gdx.audio.newSound(Gdx.files.internal(EXPLOSION_3_SOUND_LOCATION)),
-                                Gdx.audio.newSound(Gdx.files.internal(EXPLOSION_4_SOUND_LOCATION)),
-                                Gdx.audio.newSound(Gdx.files.internal(EXPLOSION_5_SOUND_LOCATION))};
+    {
+        try {
+            backgroundMusic = Mdx.audio.newMusic(Mdx.files.internal(BACKGROUND_MUSIC_LOCATION));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    Sound[] explosionSounds;
+
+    {
+        try {
+            explosionSounds = new Sound[]{Mdx.audio.newSound(Mdx.files.internal(EXPLOSION_1_SOUND_LOCATION)),
+                        Mdx.audio.newSound(Mdx.files.internal(EXPLOSION_2_SOUND_LOCATION)),
+                        Mdx.audio.newSound(Mdx.files.internal(EXPLOSION_3_SOUND_LOCATION)),
+                        Mdx.audio.newSound(Mdx.files.internal(EXPLOSION_4_SOUND_LOCATION)),
+                        Mdx.audio.newSound(Mdx.files.internal(EXPLOSION_5_SOUND_LOCATION))};
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     void loopBackgroundMusic(){
         backgroundMusic.setVolume(0.25f);

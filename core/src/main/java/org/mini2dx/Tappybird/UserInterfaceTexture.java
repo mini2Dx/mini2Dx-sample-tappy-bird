@@ -16,7 +16,8 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.graphics.Texture;
+import org.mini2Dx.core.Mdx;
+import org.mini2Dx.core.graphics.Texture;
 
 public class UserInterfaceTexture {
 
@@ -35,18 +36,18 @@ public class UserInterfaceTexture {
     private static final String PRESS_SPACE_TEXT_LOCATION = "UserInterface/textPressSpace.png";
     private static final String HIGHSCORE_TEXT_LOCATION = "UserInterface/textHighscore.png";
 
-    Texture numberZeroTexture = new Texture(NUMBER_0_LOCATION);
-    Texture numberOneTexture = new Texture(NUMBER_1_LOCATION);
-    Texture numberTwoTexture = new Texture(NUMBER_2_LOCATION);
-    Texture numberThreeTexture = new Texture(NUMBER_3_LOCATION);
-    Texture numberFourTexture = new Texture(NUMBER_4_LOCATION);
-    Texture numberFiveTexture = new Texture(NUMBER_5_LOCATION);
-    Texture numberSixTexture = new Texture(NUMBER_6_LOCATION);
-    Texture numberSevenTexture = new Texture(NUMBER_7_LOCATION);
-    Texture numberEightTexture = new Texture(NUMBER_8_LOCATION);
-    Texture numberNineTexture = new Texture(NUMBER_9_LOCATION);
+    Texture numberZeroTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_0_LOCATION));
+    Texture numberOneTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_1_LOCATION));
+    Texture numberTwoTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_2_LOCATION));
+    Texture numberThreeTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_3_LOCATION));
+    Texture numberFourTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_4_LOCATION));
+    Texture numberFiveTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_5_LOCATION));
+    Texture numberSixTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_6_LOCATION));
+    Texture numberSevenTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_7_LOCATION));
+    Texture numberEightTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_8_LOCATION));
+    Texture numberNineTexture = Mdx.graphics.newTexture(Mdx.files.internal(NUMBER_9_LOCATION));
 
-    Texture gameOverTexture = new Texture(GAME_OVER_TEXT_LOCATION);
-    Texture getReadyTexture = new Texture(PRESS_SPACE_TEXT_LOCATION);
-    Texture highscoreTexture = new Texture(HIGHSCORE_TEXT_LOCATION);
+    Texture gameOverTexture = Mdx.graphics.newTexture(Mdx.files.internal(GAME_OVER_TEXT_LOCATION));
+    Texture getReadyTexture = Mdx.graphics.newTexture(Mdx.files.internal(PRESS_SPACE_TEXT_LOCATION));
+    Texture highscoreTexture = Mdx.graphics.newTexture(Mdx.files.internal(HIGHSCORE_TEXT_LOCATION));
 }

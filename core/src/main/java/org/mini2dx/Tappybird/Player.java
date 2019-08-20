@@ -16,9 +16,10 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.graphics.Color;
-import org.mini2Dx.core.engine.geom.CollisionBox;
-import org.mini2Dx.core.graphics.Graphics;
+import org.mini2Dx.core.Graphics;
+import org.mini2Dx.core.collision.CollisionBox;
+import org.mini2Dx.core.graphics.Colors;
+
 import static org.mini2dx.Tappybird.TappyBirdGame.GRAVITY;
 
 public class Player {
@@ -66,7 +67,7 @@ public class Player {
     }
 
     void DrawPlayerCollisionBox(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Colors.RED());
         playerCollisionVertices = playerCollisionBox.getVertices();
 
         for(int i=0; i<7; i=i+2){
