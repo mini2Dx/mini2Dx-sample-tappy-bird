@@ -16,11 +16,12 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.graphics.Texture;
+import org.mini2Dx.core.Mdx;
+import org.mini2Dx.core.graphics.Texture;
 
 public class BackgroundTexture {
 
     private static final String BACKGROUND_TEXTURE_LOCATION = "background.png";
 
-    Texture background = new Texture(BACKGROUND_TEXTURE_LOCATION);
+    Texture background = Mdx.graphics.newTexture(Mdx.files.internal(BACKGROUND_TEXTURE_LOCATION));
 }

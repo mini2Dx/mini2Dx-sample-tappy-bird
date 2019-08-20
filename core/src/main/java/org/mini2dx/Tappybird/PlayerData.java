@@ -16,9 +16,8 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.utils.GdxRuntimeException;
 import org.mini2Dx.core.Mdx;
-import org.mini2Dx.core.playerdata.PlayerDataException;
+import org.mini2Dx.core.exception.PlayerDataException;
 import org.mini2Dx.core.serialization.annotation.Field;
 
 
@@ -53,7 +52,7 @@ public class PlayerData {
             setHighScore(data.getHighScore());
         } catch (PlayerDataException e) {
             setHighScore(0);
-        } catch (GdxRuntimeException e) {
+        } catch (Exception e) {
             setHighScore(0);
         }
     }

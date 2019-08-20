@@ -16,9 +16,10 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.graphics.Texture;
+import org.mini2Dx.core.Mdx;
 import org.mini2Dx.core.graphics.Animation;
 import org.mini2Dx.core.graphics.SpriteSheet;
+import org.mini2Dx.core.graphics.Texture;
 
 public class PlayerTexture {
 
@@ -26,7 +27,7 @@ public class PlayerTexture {
 
     private float frameDuration = 0.025f;
 
-    Texture spriteTexture = new Texture(PLAYER_SPRITE_SHEET_LOCATION);
+    Texture spriteTexture = Mdx.graphics.newTexture(Mdx.files.internal(PLAYER_SPRITE_SHEET_LOCATION));
     SpriteSheet playerSpriteSheet = new SpriteSheet(spriteTexture,88,73);
     Animation playerAnimation = new Animation();
 

@@ -16,12 +16,12 @@
 
 package org.mini2dx.Tappybird;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import org.mini2Dx.core.Mdx;
+import org.mini2Dx.gdx.Input;
 
 public class InputHandler {
 
     boolean spacePressed() {
-        return Gdx.input.isKeyJustPressed(Input.Keys.SPACE);
+        return Mdx.input.isKeyJustPressed(Input.Keys.SPACE);
     }
 }

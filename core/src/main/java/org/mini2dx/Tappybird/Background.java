@@ -16,7 +16,8 @@
 
 package org.mini2dx.Tappybird;
 
-import org.mini2Dx.core.graphics.Graphics;
+import org.mini2Dx.core.Graphics;
+
 import static org.mini2dx.Tappybird.TappyBirdGame.FLYING_SPEED;
 
 public class Background extends Hazards {
